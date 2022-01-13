@@ -1,0 +1,48 @@
+@import "../variables/variables";
+
+.berliner-contact-form {
+  max-width: 420px;
+
+  .form-control::placeholder {
+    color: $color-principal;
+    opacity: 1;
+  }
+}
+
+.berliner-address-col {
+  max-width: 520px;
+
+  .berliner-contacts {
+    padding-left: 0;
+
+    li {
+      list-style: none;
+      margin-bottom: 20px;
+      a {
+        i {
+          width: 30px;
+        }
+      }
+    }
+  }
+}
+
+.form-control,
+input:-internal-autofill-selected,
+select:not([multiple]) {
+  color: $color-principal !important;
+}
+
+.mapouter {
+  position: relative;
+  height: 480px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.gmap-canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 480px;
+  width: 100%;
+}

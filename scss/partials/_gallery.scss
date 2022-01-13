@@ -1,0 +1,32 @@
+@import "../variables/variables";
+
+.berliner-gallery {
+  div.d-block {
+    animation: show 0.5s ease;
+  }
+
+  figure.effect-ming {
+    background: $color-bg-gallery;
+
+    img {
+      opacity: 0.9;
+      -webkit-transition: opacity 0.35s;
+      transition: opacity 0.35s;
+    }
+
+    &:hover img {
+      opacity: 0.4;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

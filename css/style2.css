@@ -1,0 +1,273 @@
+.berliner-row-1640 .berliner-about-img-text-container, .berliner-footer .berliner-social-links li a, .berliner-social li a i {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+p {
+  line-height: 1.8; }
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease; }
+  a:hover {
+    color: #009999; }
+
+.container-fluid {
+  max-width: 1770px; }
+
+.berliner-container-small {
+  max-width: 1050px; }
+
+.btn {
+  border-radius: 0; }
+
+.btn-primary {
+  background-color: #009999;
+  border: 0;
+  border-radius: 5px;
+  padding: 12px 50px 14px;
+  font-size: 1.2rem; }
+  .btn-primary:hover {
+    background-color: #086969; }
+  .btn-primary:focus {
+    background-color: #086969; }
+
+.form-control {
+  padding: 10px 20px;
+  width: 100%;
+  height: auto; }
+
+.form-group {
+  margin-bottom: 25px; }
+
+.berliner-btn-big {
+  padding: 12px 90px 14px; }
+
+.berliner-mt-60 {
+  margin-top: 60px; }
+
+.berliner-mb-50 {
+  margin-bottom: 50px; }
+
+.berliner-mb-74 {
+  margin-bottom: 74px; }
+
+.berliner-mb-90 {
+  margin-bottom: 90px; }
+
+.berliner-text-primary {
+  color: #009999; }
+
+a.berliner-text-primary:hover {
+  color: #666666; }
+
+.berliner-bg-gray {
+  background-color: #eeeeee; }
+
+p,
+.berliner-text-gray {
+  color: #676767; }
+
+.berliner-text-gray-light {
+  color: #000; }
+
+.berliner-text-gray-dark {
+  color: #666666; }
+
+nav .navbar-brand {
+  color: #009999;
+  font-size: 1.6rem; }
+
+nav .navbar-toggler:focus {
+  box-shadow: none; }
+
+nav .nav-item {
+  margin-right: 30px; }
+  nav .nav-item:last-child {
+    margin-right: 0; }
+  nav .nav-item .nav-link {
+    color: #666666;
+    border-bottom: 4px solid transparent;
+    font-size: 1.2rem; }
+  nav .nav-item .nav-link-1.active {
+    border-color: #009999; }
+  nav .nav-item .nav-link-1:hover {
+    border-color: #009999; }
+
+.berliner-hero {
+  min-height: 200px;
+  background-image: url(../img/logo.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .berliner-hero .berliner-search-form .berliner-search-input {
+    width: 360px;
+    border-radius: 0;
+    padding: 12px 15px;
+    color: #009999;
+    border: none; }
+    .berliner-hero .berliner-search-form .berliner-search-input:focus {
+      border-color: #009999;
+      box-shadow: 0 0 0 0.25rem #0099ff; }
+    .berliner-hero .berliner-search-form .berliner-search-input::placeholder {
+      color: #009999;
+      opacity: 1; }
+    .berliner-hero .berliner-search-form .berliner-search-input::-ms-input-placeholder {
+      color: #009999; }
+  .berliner-hero .berliner-search-form .berliner-search-btn {
+    color: #fff;
+    background-color: #009999;
+    border: none;
+    width: 100px;
+    height: 50px;
+    margin-left: -1px; }
+
+.berliner-gallery div.d-block {
+  animation: show 0.5s ease; }
+
+.berliner-gallery figure.effect-ming {
+  background: #030c17; }
+  .berliner-gallery figure.effect-ming img {
+    opacity: 0.9;
+    -webkit-transition: opacity 0.35s;
+    transition: opacity 0.35s; }
+  .berliner-gallery figure.effect-ming:hover img {
+    opacity: 0.4; }
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0.9); }
+  100% {
+    opacity: 1;
+    transform: scale(1); } }
+
+.berliner-row-1640 .berliner-about-img-text-container, .berliner-footer .berliner-social-links li a, .berliner-social li a i {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.berliner-row-1640 {
+  max-width: 1640px; }
+  .berliner-row-1640 .berliner-about-img-text-container {
+    flex-direction: column; }
+    .berliner-row-1640 .berliner-about-img-text-container .berliner-about-img-text {
+      max-width: 940px;
+      color: #000; }
+
+.berliner-contact-form {
+  max-width: 420px; }
+  .berliner-contact-form .form-control::placeholder {
+    color: #009999;
+    opacity: 1; }
+
+.berliner-address-col {
+  max-width: 520px; }
+  .berliner-address-col .berliner-contacts {
+    padding-left: 0; }
+    .berliner-address-col .berliner-contacts li {
+      list-style: none;
+      margin-bottom: 20px; }
+      .berliner-address-col .berliner-contacts li a i {
+        width: 30px; }
+
+.form-control,
+input:-internal-autofill-selected,
+select:not([multiple]) {
+  color: #009999 !important; }
+
+.mapouter {
+  position: relative;
+  height: 480px;
+  width: 100%;
+  max-width: 480px; }
+
+.gmap-canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 480px;
+  width: 100%; }
+
+.berliner-row-1640 .berliner-about-img-text-container, .berliner-footer .berliner-social-links li a, .berliner-social li a i {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.berliner-footer {
+  font-size: 0.95rem; }
+  .berliner-footer .berliner-footer-title {
+    font-size: 1.4rem; }
+  .berliner-footer .berliner-footer-links li {
+    list-style: none;
+    margin-bottom: 5px; }
+    .berliner-footer .berliner-footer-links li a {
+      color: #676767; }
+      .berliner-footer .berliner-footer-links li a:hover {
+        color: #009999; }
+  .berliner-footer .berliner-social-links li {
+    list-style: none;
+    margin-right: 15px; }
+    .berliner-footer .berliner-social-links li:last-child {
+      margin-right: 0; }
+    .berliner-footer .berliner-social-links li a {
+      color: #676767;
+      width: 44px;
+      height: 44px;
+      background-color: #fff; }
+      .berliner-footer .berliner-social-links li a:hover {
+        color: #fff;
+        background-color: #009999; }
+
+.berliner-social li {
+  list-style: none;
+  margin-bottom: 20px;
+  margin-right: 15px; }
+
+.berliner-social li a i {
+  width: 40px;
+  height: 40px;
+  color: #666666;
+  background-color: #eeeeee;
+  transition: all 0.3s ease; }
+
+.berliner-social li a:hover i {
+  color: #fff;
+  background-color: #009999; }
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    background: #fff;
+    width: 150px;
+    padding: 15px; }
+  .berliner-container-content {
+    max-width: 870px; }
+  .berliner-contact-form,
+  .berliner-address-col,
+  .mapouter {
+    max-width: 100%; } }
+
+@media (max-width: 767px) {
+  .berliner-about-img-text {
+    max-width: 640px; } }
+
+@media (max-width: 575px) {
+  .berliner-container-content {
+    max-width: 420px; }
+  .berliner-search-form {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    justify-content: center; }
+  .berliner-search-input {
+    width: 100%;
+    max-width: 360px; } }
+
+@media (max-width: 334px) {
+  .berliner-social-links {
+    flex-wrap: wrap;
+    justify-content: start !important; }
+    .berliner-social-links li {
+      margin-right: 3px; } }

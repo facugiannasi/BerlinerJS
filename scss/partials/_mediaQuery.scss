@@ -1,0 +1,54 @@
+@import "../variables/variables";
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    background: $color-white;
+    width: 150px;
+    padding: 15px;
+  }
+
+  .berliner-container-content {
+    max-width: 870px;
+  }
+
+  .berliner-contact-form,
+  .berliner-address-col,
+  .mapouter {
+    max-width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .berliner-about-img-text {
+    max-width: 640px;
+  }
+}
+@media (max-width: 575px) {
+  .berliner-container-content {
+    max-width: 420px;
+  }
+
+  .berliner-search-form {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .berliner-search-input {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 334px) {
+  .berliner-social-links {
+    flex-wrap: wrap;
+    justify-content: start !important;
+    li {
+      margin-right: 3px;
+    }
+  }
+}

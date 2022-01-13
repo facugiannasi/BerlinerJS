@@ -1,0 +1,70 @@
+@import "../variables/variables";
+
+nav {
+  .navbar-brand {
+    color: $color-principal;
+    font-size: 1.6rem;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+
+  .nav-item {
+    margin-right: 30px;
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .nav-link {
+      color: $color-icon-footer;
+      border-bottom: 4px solid transparent;
+      font-size: 1.2rem;
+    }
+
+    .nav-link-1.active {
+      border-color: $color-principal;
+    }
+    .nav-link-1:hover {
+      border-color: $color-principal;
+    }
+  }
+}
+
+.berliner-hero {
+  min-height: 200px;
+  background-image: url(../img/logo.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .berliner-search-form {
+    .berliner-search-input {
+      width: 360px;
+      border-radius: 0;
+      padding: 12px 15px;
+      color: $color-principal;
+      border: none;
+      &:focus {
+        border-color: $color-principal;
+        box-shadow: 0 0 0 0.25rem $color-shadow-nav;
+      }
+      &::placeholder {
+        color: $color-principal;
+        opacity: 1;
+      }
+      &::-ms-input-placeholder {
+        color: $color-principal;
+      }
+    }
+
+    .berliner-search-btn {
+      color: $color-white;
+      background-color: $color-principal;
+      border: none;
+      width: 100px;
+      height: 50px;
+      margin-left: -1px;
+    }
+  }
+}

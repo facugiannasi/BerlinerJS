@@ -1,0 +1,96 @@
+@import "../variables/variables";
+@import "../variables/mixins";
+
+p {
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $color-principal;
+  }
+}
+
+.container-fluid {
+  @include max-width(1770px);
+}
+
+.berliner-container-small {
+  @include max-width(1050px);
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-primary {
+  background-color: $color-principal;
+  border: 0;
+  border-radius: 5px;
+  padding: 12px 50px 14px;
+  font-size: 1.2rem;
+  &:hover {
+    background-color: $color-principal-1;
+  }
+  &:focus {
+    background-color: $color-principal-1;
+  }
+}
+
+.form-control {
+  padding: 10px 20px;
+  width: 100%;
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.berliner-btn-big {
+  padding: 12px 90px 14px;
+}
+
+.berliner-mt-60 {
+  margin-top: 60px;
+}
+
+.berliner-mb-50 {
+  margin-bottom: 50px;
+}
+
+.berliner-mb-74 {
+  margin-bottom: 74px;
+}
+
+.berliner-mb-90 {
+  margin-bottom: 90px;
+}
+
+.berliner-text-primary {
+  color: $color-principal;
+}
+
+a.berliner-text-primary:hover {
+  color: $color-icon-footer;
+}
+
+.berliner-bg-gray {
+  background-color: $color-bg-footer-white;
+}
+
+p,
+.berliner-text-gray {
+  color: $color-grey-footer;
+}
+
+.berliner-text-gray-light {
+    color: $color-black;
+}
+
+
+.berliner-text-gray-dark {
+  color: $color-icon-footer;
+}

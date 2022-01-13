@@ -1,0 +1,65 @@
+@import "../variables/variables";
+@import "../variables/mixins";
+
+.berliner-footer {
+  font-size: 0.95rem;
+
+  .berliner-footer-title {
+    font-size: 1.4rem;
+  }
+
+  .berliner-footer-links {
+    li {
+      list-style: none;
+      margin-bottom: 5px;
+
+      a {
+        color: $color-grey-footer;
+        &:hover {
+          color: $color-principal;
+        }
+      }
+    }
+  }
+
+  .berliner-social-links {
+    li {
+      list-style: none;
+      margin-right: 15px;
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        color: $color-grey-footer;
+        width: 44px;
+        height: 44px;
+        background-color: $color-white;
+        @extend %flex-center;
+        &:hover {
+          color: $color-white;
+          background-color: $color-principal;
+        }
+      }
+    }
+  }
+}
+
+.berliner-social li {
+  list-style: none;
+  margin-bottom: 20px;
+  margin-right: 15px;
+}
+
+.berliner-social li a i {
+  width: 40px;
+  height: 40px;
+  color: $color-icon-footer;
+  background-color: $color-bg-footer-white;
+  @extend %flex-center;
+  transition: all 0.3s ease;
+}
+
+.berliner-social li a:hover i {
+  color: $color-white;
+  background-color: $color-principal;
+}

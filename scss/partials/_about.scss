@@ -1,0 +1,15 @@
+@import "../variables/mixins";
+
+.berliner-row-1640 {
+  max-width: 1640px;
+
+  .berliner-about-img-text-container {
+    @extend %flex-center;
+    flex-direction: column;
+
+    .berliner-about-img-text {
+      max-width: 940px;
+      color: $color-black;
+    }
+  }
+}
