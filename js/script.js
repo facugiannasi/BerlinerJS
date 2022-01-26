@@ -1,100 +1,197 @@
-const clients = [];
-const productsInCart = [];
-
-class Client {
-    constructor(name, lastName, age, email) {
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
-        this.email = email;
-    }
-}
-
-const newClient = () => {
-    alert(`Hola vamos a crear tu perfil!`);
-    let client = new Client(prompt(`Ingresa tu nombre:`), prompt(`Ingresa tu apellido:`), prompt(`Ingresa tu edad:`), prompt(`Ingresa tu email:`));
-    clients.push(client);
-    alert(`Bienvenido ${client.name} ${client.lastName}`);
-    console.table(clients);
-    askProduct();
-}
-
-class Product {
-    constructor(name, price) {
-        this.name = name;
-        this.price = price;
-    }
-}
+const productsInCart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
 
 const products = [
     {
         nombre: "Obra - La esperanza",
+        descripcion: "Obra inspirada en La herencia de John Grisham. Stock para entrega inmediata.",
         precio: 4500,
+        imagen: "img/tienda1.png",
         id: 1
     },
     {
         nombre: "Obra - La inocencia",
+        descripcion: "Obra abstracta en tonos grises. Variedad de medidas disponibles.",
         precio: 5800,
+        imagen: "img/tienda2.png",
         id: 2
     },
     {
         nombre: "Obra - El paseo de los tulipanes",
+        descripcion: "Mural no inspirado en tulipanes. Variedad de medidas disponible.",
         precio: 8500,
+        imagen: "img/tienda3.png",
         id: 3
     },
     {
         nombre: "Obras en Exposicion - La Rural",
+        descripcion: "Obras en exposicion. Variedad de medidas disponibles.",
         precio: 13500,
+        imagen: "img/tienda4.png",
         id: 4
     }
 ];
 
+const addToCart = (id) => {
+    const product = products.find(product => product.id == id);
+
+    if (productsInCart.length > 0) {
+        var dontExist = true;
+        for (let i = 0; i < productsInCart.length; i++) {
+            if (productsInCart[i].id == id) {
+                productsInCart[i].quantity += 1;
+                dontExist = false;
+            }
+        }
+        if (dontExist) {
+            product.quantity = 1;
+            productsInCart.push(product);
+        }
+    } else {
+        product.quantity = 1;
+        productsInCart.push(product);
+    }
+    localStorage.setItem("cart", JSON.stringify(productsInCart));
+    Swal.fire({
+        title: 'Producto agregado',
+        text: `El producto ${product.nombre} se ha agregado al carrito`,
+        icon: 'success'
+    });
+}
+
+const buyProducts = () => {
+    localStorage.removeItem("cart");
+    productsInCart.length = 0;
+    renderCart();
+    totalPrice();
+    Swal.fire({
+        title: 'Compra realizada',
+        text: 'Gracias por su compra, tu pedido esta en camino, en breve nos comunicaremos con usted. Tu numeros de pedido es: ' + Math.floor(Math.random() * 1000000),
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+    });
+}
+
 const totalPrice = () => {
     let total = 0;
     productsInCart.forEach(product => {
-        total += product.precio;
+        total += product.precio * product.quantity;
     });
-    return total;
-}
-
-const askForAnotherProduct = () => {
-    const answer = prompt("¿Quieres agregar otro producto? Escriba 'Si' o 'No'");
-    if (answer == "si" || answer == "Si" || answer == "SI") {
-        askProduct();
-    } else if (answer == "no" || answer == "No" || answer == "NO") {
-        alert(`${name} Tu compra tiene un total de $${totalPrice()}`);
-        askForNewProduct();
+    const options = {
+        style: "currency",
+        currency: "USD"
+    }
+    const numberFormat = new Intl.NumberFormat('en-US', options)
+    if (total > 0) {
+        totalContainer.innerHTML = `
+                                    <h2>Total: ${numberFormat.format(total)}</h2>
+                                    <div class="btnBuyCart">
+                                        <a href="#" class="btn btn-primary" onClick="buyProducts()">Comprar</a>
+                                    </div>
+                                    
+                                    `;
     } else {
-        alert("Respuesta no válida");
-        askForAnotherProduct();
+        totalContainer.innerHTML = "";
     }
 }
 
-const askForNewProduct = () => {
-    const answer = prompt("¿Quieres crear otro producto? Escriba 'Si' o 'No'");
-    if (answer == "si" || answer == "Si" || answer == "SI") {
-        let newProduct = new Product(prompt("Nombre del producto"), Number(prompt("Precio del producto")));
-        alert(`${newProduct.name} fue agregado a la lista de productos con un precio de $${newProduct.price}`);
-        products.push(newProduct);
-        askForNewProduct();
-    } else if (answer == "no" || answer == "No" || answer == "NO") {
-        alert(`${clients[0].name} que tengas un buen día! :)`);
-    } else {
-        alert("Respuesta no válida");
-        askForNewProduct();
+const removeFromCart = (id) => {
+    for (let i = 0; i < productsInCart.length; i++) {
+        if (productsInCart[i].id == id) {
+            productsInCart.splice(i, 1);
+        }
     }
+    localStorage.setItem("cart", JSON.stringify(productsInCart));
+    renderCart();
+    totalPrice();
 }
 
-const askProduct = () => {
-    const productId = prompt(`¿Qué producto deseas agregar? Escriba el ID del producto \n 1 - ${products[0].nombre} \n 2 - ${products[1].nombre} \n 3 - ${products[2].nombre} \n 4 - ${products[3].nombre} \n 5 - ${products[4].nombre} \n 6 - ${products[5].nombre}`);
-    const product = products.find(product => product.id == productId);
-    if (product) {
-        productsInCart.push(product);
-        alert(`${product.nombre} agregado al carrito`);
-        askForAnotherProduct();
+let artContainer = document.getElementById('artContainer');
+
+const renderProducts = () => {
+    products.forEach(product => {
+        var productCard = document.createElement("div");
+        productCard.classList.add("col-xl-3", "col-lg-4", "col-md-6", "col-sm-6", "col-12", "mb-5");
+        productCard.innerHTML = `
+            <div class="card" style="width: 18rem">
+                <img
+                src="${product.imagen}"
+                class="card-img-top"
+                alt=${"Imagen del producto " + product.nombre}
+                />
+                <div class="card-body">
+                    <h5 class="card-title">${product.nombre}</h5>
+                    <p class="card-text">
+                        ${product.descripcion}
+                    </p>
+                    <a href="#" class="btn btn-primary" onClick="addToCart(${product.id})">Agregar al carrito</a>
+                </div>
+            </div>
+            `;
+        artContainer.appendChild(productCard);
+    });
+};
+
+let cartContainer = document.getElementById('cartContainer');
+
+const renderCart = () => {
+    cartContainer.innerHTML = "";
+    if (productsInCart.length > 0) {
+        cartContainer.innerHTML += `
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <h5>Producto</h5>
+                                        </div>
+                                        <div class="col text-center">
+                                            <h5>Precio</h5>
+                                        </div>
+                                        <div class="col text-center">
+                                            <h5>Cantidad</h5>
+                                        </div>
+                                        <div class="col text-center">
+                                            <h5>Subtotal</h5>
+                                        </div>
+                                        <div class="col text-center">
+                                            <h5>Eliminar</h5>
+                                        </div>
+                                    </div>
+                                    `
+
+        productsInCart.forEach(product => {
+            let subtotal = Number(product.precio) * Number(product.quantity);
+            var cartItem = document.createElement('div');
+            cartItem.classList.add('row', 'cartItemContainer');
+            cartItem.innerHTML += `
+                                        <div class="col cartItem text-center">${product.nombre}</div>
+                                        <div class="col cartItem text-center">$${product.precio}</div>
+                                        <div class="col cartItem text-center">${product.quantity}</div>
+                                        <div class="col cartItem text-center">$${subtotal}</div>
+                                        <div class="col cartItem text-center">
+                                            <i class="fas fa-trash-alt" onClick="removeFromCart(${product.id})"></i>
+                                        </div>
+                                        `;
+            cartContainer.appendChild(cartItem);
+        });
+        totalPrice();
     } else {
-        alert("Producto no encontrado");
-        askProduct();
+        cartContainer.innerHTML = `
+                                    <div class="row mt-5">
+                                        <div class="col text-center">
+                                            <h3>Tu carrito está vacio</h3>
+                                        </div>
+                                    </div>
+                                    `;
     }
+
 }
-newClient();
+
+
+const whatToRender = () => {
+    let path = window.location.pathname;
+    if (path.endsWith("/tienda.html")) {
+        renderProducts();
+    } else if (path.endsWith("/cart.html")) {
+        renderCart();
+    }
+};
+
+whatToRender();
