@@ -1,35 +1,23 @@
 const productsInCart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
 
-const products = [
-    {
-        nombre: "Obra - La esperanza",
-        descripcion: "Obra inspirada en La herencia de John Grisham. Stock para entrega inmediata.",
-        precio: 4500,
-        imagen: "img/tienda1.png",
-        id: 1
-    },
-    {
-        nombre: "Obra - La inocencia",
-        descripcion: "Obra abstracta en tonos grises. Variedad de medidas disponibles.",
-        precio: 5800,
-        imagen: "img/tienda2.png",
-        id: 2
-    },
-    {
-        nombre: "Obra - El paseo de los tulipanes",
-        descripcion: "Mural no inspirado en tulipanes. Variedad de medidas disponible.",
-        precio: 8500,
-        imagen: "img/tienda3.png",
-        id: 3
-    },
-    {
-        nombre: "Obras en Exposicion - La Rural",
-        descripcion: "Obras en exposicion. Variedad de medidas disponibles.",
-        precio: 13500,
-        imagen: "img/tienda4.png",
-        id: 4
-    }
-];
+let products = [];
+
+if (location.pathname.endsWith("tienda.html")) {
+    document.addEventListener("DOMContentLoaded", dbProducts);
+}
+
+function dbProducts() {
+    $.ajax({
+        url: "../database.json",
+        success: function (response) {
+            console.log(response);
+            products = response;
+            whatToRender();
+        }, error: function (error) {
+            console.log(error);
+        }
+    });
+}
 
 const addToCart = (id) => {
     const product = products.find(product => product.id == id);
